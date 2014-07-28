@@ -1,0 +1,39 @@
+<div class="page">
+	<form method="post" action="__URL__/picUpload/navTabId/__MODULE__" class="pageForm required-validate"  enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxDone)">
+		<input type="hidden" name="user_id" value="<?php echo $_SESSION[C('USER_AUTH_KEY')] ?>"/> 
+		<input type="hidden" name="pid" value="{$pid}">
+		<div class="pageFormContent" layoutH="58">
+			<div class="unit">
+				<label>图片名称：</label>
+				<input type="text" class="required"  name="name" value="{$time|date='YmdHis',###}{$i|rand_number=100000}">
+			</div>
+			<div class="unit">
+				<label>所属相册：</label>
+					<select name="aid" class="required number">
+	                    <option value="">请选择</option>
+	                   <volist id="vo" name="listall">
+	                   	<option value="{$vo['id']}">{:str_repeat('....',$vo['lv'])}{$vo['title']}</option>
+	                   </volist>
+                   </select>
+			</div>
+            <div class="unit">
+				<label>排序：</label>
+				<input type="text" class="required number" value="100" name="sort"><small>默认值为100</small>
+			</div>
+			<div class="unit">
+				<label>上传图片：</label>
+				<input type="file" class="required"   name="file">
+				<small>图片上传大小不大于2M</small>
+			</div>
+		</div>
+		
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+
+</div>
+

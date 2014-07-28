@@ -1,0 +1,42 @@
+<include file="Public:pagerForm" />
+
+<div class="page">
+    <div class="pageHeader">
+        <form rel="pagerForm" onsubmit="return navTabSearch(this);" action="__URL__" method="post">
+            <div class="searchBar">
+                <ul class="searchContent">
+                    <li>
+                        <label>用户名：</label>
+                        <input type="text" name="user_name" value=""/>
+                    </li>
+                </ul>
+                <div class="subBar">
+                    <ul>
+                        <li><div class="buttonActive"><div class="buttonContent"><button type="submit">查询</button></div></div></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </div>
+
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add"><span>新增</span></a></li>
+			<li><a class="delete"><span>删除</span></a></li>
+			<li><a class="edit"><span>编辑</span></a></li>
+		</ul>
+	</div>
+
+
+
+	<div class="panelBar">
+		<div class="pages">
+			<span>共{$totalCount}条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="1" currentPage="{$currentPage}"></div>
+	</div>
+
+</div>
+
+</div>

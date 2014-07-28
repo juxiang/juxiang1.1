@@ -1,0 +1,28 @@
+<include file="Public:pagerForm" />
+    <script>
+    	//$("#tableList").loadUrl(__URL__+'/wxresponsemessage');
+    </script>
+<div class="page">
+<div class="pageHeader" layoutH="414">
+       <h1>说明：{$content}</h1>
+</div>
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="__URL__/addText/kyw/{$keyword}" target="dialog" mask="true"><span>文本回复</span></a></li>
+			<li><a class="add" href="__URL__/addnews/kyw/{$keyword}/c/1" target="ajax" rel="tableList"><span>单图文回复</span></a></li>
+			<li><a class="add" href="__URL__/newsselect/kyw/{$keyword}" target="ajax" rel="tableList"><span>多图文回复</span></a></li>
+			<li><a class="icon" href="__URL__" target="ajax" rel="pagebody" mask="true"><span>返回首页</span></a></li>
+		</ul>
+	</div>
+	<div id='tableList'>
+		<h1>{$content}</h1>
+<!--     <div class="panelBar">
+		<div class="pages">
+			<span>共{$totalCount}条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
+	</div> -->
+	</div>
+</div>
+</div>

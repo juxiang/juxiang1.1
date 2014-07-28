@@ -1,0 +1,48 @@
+.wyd-shadow {
+	box-shadow: 1px 1px 2px #d8d8d8; -webkit-box-shadow: 1px 1px 2px #D8D8D8; -moz-box-shadow: 1px 1px 2px #D8D8D8;
+}
+.wyd-radius {
+	border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
+}
+.dialog-win {
+	background: rgb(255, 255, 255); margin: 0px; padding: 1px; border: 1px solid rgb(153, 153, 153); border-image: none; width: 300px; height: 0px; right: 0px; bottom: 0px; overflow: hidden; display: none; position: fixed; z-index: 10000000; -ms-zoom: 1;
+}
+.dialog-content {
+	
+}
+.dialog-notice {
+	font: 14px/28px "Î¢ÈíÑÅºÚ"; color: rgb(68, 68, 68); float: left; font-size-adjust: none; font-stretch: normal;
+}
+.dialog-pannle {
+	margin: 0px auto; width: 300px; overflow: hidden;
+}
+.dialog-tit {
+	background: rgb(238, 238, 238); margin: 0px 0px 8px; padding: 0px 10px; height: 28px; line-height: 28px; border-bottom-color: rgb(225, 225, 225); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.dialog-prev {
+	background: url("/images/dialog.png") no-repeat 0px 9px; width: 8px; height: 28px; float: left; cursor: pointer;
+}
+.dialog-next {
+	background: url("/images/dialog.png") no-repeat -21px 9px; width: 8px; height: 28px; float: left; cursor: pointer;
+}
+.dialog-close {
+	background: url("/images/dialog.png") no-repeat right 9px; width: 12px; height: 28px; text-indent: -1000px; float: right; cursor: pointer;
+}
+.dialog-inner {
+	margin: 0px 10px; height: 100px; overflow: hidden; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis;
+}
+.dialog-inner-tit {
+	line-height: 26px; font-weight: bold;
+}
+.dialog-inner-text {
+	line-height: 26px; text-indent: 2em;
+}
+.dialog-more {
+	margin: 10px 10px 0px; text-align: right; line-height: 28px; border-top-color: rgb(156, 154, 156); border-top-width: 1px; border-top-style: dashed;
+}
+.dialog-more a {
+	color: rgb(51, 130, 210); text-decoration: none;
+}
+.dialog-more a:hover {
+	color: rgb(221, 75, 18);
+}

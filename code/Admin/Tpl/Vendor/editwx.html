@@ -1,0 +1,81 @@
+<div class="page">
+	<div class="layoutBox">
+	<form method="post" action="__URL__/updatewx/navTabId/__MODULE__" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this,navTabAjaxDone);">
+		<input type="hidden" name="id" value="{$vo.id}" />
+		<input type="hidden" name="mdate" value="<?php echo time() ?>"/>
+        <input type="hidden" name="user_id" value="<?php echo $_SESSION[C('USER_AUTH_KEY')] ?>"/>
+       
+		<div class="pageFormContent" layoutH="58">
+
+			<p >
+	         		<label>客 户 编号：</label>
+					<input id='venno' name="venno" type="text" size="30" value="{$vo.venno}" readonly="readonly"/>
+				</p>
+				
+				<p>
+					<label>客户名称：</label>
+					<input name="venname" class="required" type="text" size="30" value="{$vo.venname}" readonly="readonly"/>
+				</p>
+				
+          		<div class="divider"></div>
+			
+				<p >
+					<label>微信Logo：</label>
+					<td><input name="weixinlogo" type="file"  class="required" value="{$vo.logo_file}"/>
+					</td>
+					<td>
+					<a href="__URL__/downloadImg/venno/{$vo.venno}/file/logo_file/navTabId/__MODULE__" >下载</a></td>
+				</p>
+				<p >
+					<label>营业执照副本：</label>
+					<td><input name="yinye" type="file"  class="required" value="{$vo.business_file}"/>
+					</td>
+					<td>
+					<a href="__URL__/downloadImg/venno/{$vo.venno}/file/business_file/navTabId/__MODULE__" >下载</a></td>
+				</p>
+
+				<p >
+					<label>组织机构代码：</label>
+					<td><input name="zuzhi" type="file"  class="required" file="{$vo.organiz_file}"/>
+					</td>
+					<td>
+					<a  href ="__URL__/downloadImg/venno/{$vo.venno}/file/organiz_file/navTabId/__MODULE__">下载</a></td>
+				</p>
+				<p >
+					<label>持证人相片：</label>
+					<td><input name="shenfenzheng" type="file"  class="required" value="{$vo.identity_file}"/>
+					</td>
+					<td>
+					<a href="__URL__/downloadImg/venno/{$vo.venno}/file/identity_file/navTabId/__MODULE__"  >下载</a></td>
+				</p>
+
+				<p>
+					<label>持证人姓名：</label>
+					<input name="enterprise_user" type="text" value="{$vo.enterprise_user}" class="required"  size="30" />
+				</p>
+
+				<p>
+					<label>身份证号：</label>
+					<input name="identity_number" type="text" size="30" value="{$vo.identity_number}" class="required"  />
+				</p>
+
+				<p>
+					<label>手机号：</label>
+					<input name="enterphone" type="text" size="30"  value="{$vo.enterphone}" class="phone" class="required"   />
+				</p>
+
+				<p>
+					<label>邮箱：</label>
+					<input name="enteremail" type="text" size="30" value="{$vo.enteremail}"  class="email" class="required"  />
+				</p>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+	</div>
+</div>

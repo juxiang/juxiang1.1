@@ -1,0 +1,77 @@
+<include file="Public:pagerForm" />
+
+<div class="page">
+    <div class="pageHeader">
+        <form rel="pagerForm" onsubmit="return navTabSearch(this);" action="__URL__" method="post">
+            <div class="searchBar">
+                <ul class="searchContent">
+                    <li>
+                        <label>单位名称：</label>
+                        <input type="text" name="venname"  value="{$_REQUEST['venname']}" />
+                    </li>
+                </ul>
+                <div class="subBar">
+                    <ul>
+                        <li><div class="buttonActive"><div class="buttonContent"><button type="submit">查询</button></div></div></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </div>
+
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="__URL__/add"  target="dialog" mask="true" width="600" height="480" ><span>新增</span></a></li>
+			<li><a class="edit" href="__URL__/edit/id/{sid_user}" target="dialog" width="600" height="480" mask="true" warn="请选择用户"><span>编辑</span></a></li>
+			<li class="line">line</li>
+			<li><a class="edit" href="__URL__/editwx/id/{sid_user}" target="dialog" width="600" height="480" mask="true" warn="请选择操作项"><span>注册微信信息</span></a></li>
+			<li><a class="edit" href="__URL__/editwxce/id/{sid_user}" target="dialog" width="600" height="480" mask="true" warn="请选择操作项"><span>微信基本信息</span></a></li>
+		</ul>
+	</div>
+
+	<table class="list" width="100%" layoutH="116">
+		<thead>
+				<tr>
+						<th>单位名称</th>
+                        <th width="12%" >邮箱</th>
+                        <th width="8%" >手机号</th>
+                        <th width="20%" >地址</th>
+                        <th width="8%" >营业执照号</th>
+						<th width="8%" >组织机构代码</th>
+						<th width="18%" >经营范围</th>
+						<th width="40" orderField="status" <if condition="$_REQUEST._order eq 'status'">class="{$_REQUEST._sort}"</if>>状态</th>
+					
+                        <th width="40" >操作</th>
+                </tr>
+		</thead>
+		<tbody>
+		<volist id="vo" name="list">
+                    <tr target="sid_user" rel="{$vo['id']}">
+                      
+					   
+						<td>{$vo['venname']}</td>
+                        <td>{$vo['email']}</td>
+                        <td>{$vo['phone']}</td>
+                        <td>{$vo['address']}</td>
+						<td>{$vo['business_num']}</td>
+                        <td>{$vo['organiz_code']}</td>
+						<td>{$vo['business_scope']}</td>
+						<td>{$vo['status']|getStatus}</td>
+						
+                       <td>{$vo['status']|showStatus=$vo['id'],'navTabAjaxMenu'}</td>
+                    </tr>
+		</volist>
+		</tbody>
+	</table>
+
+	<div class="panelBar">
+		<div class="pages">
+			<span>共{$totalCount}条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
+	</div>
+
+</div>
+
+</div>

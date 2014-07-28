@@ -1,0 +1,127 @@
+
+<script language="JavaScript">
+<!--
+function checkName(){
+	ThinkAjax.send('__URL__/checkVenname/','ajax=1&account='+$F('account'));
+}
+//-->
+</script>
+
+
+<div class="pageContent">
+	
+	<form method="post" action="__URL__/insert/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<div class="pageFormContent" layoutH="58">
+
+	         	<p>
+	         		<label>客 户 编号：</label>
+					<input id='venno' name="venno" type="text" size="30" value="" readonly="readonly"/>
+				</p>
+
+				<p>
+					<label>客户名称：</label>
+					<input name="venname" class="required" type="text" size="30" value="" alt="请输入客户名称"/>
+				</p>
+
+				<p>
+					<label>法人姓名：</label>
+					<input name="legalperson" type="text" size="30" />
+				</p>
+
+				<p>
+					<label>法人代表身份证号：</label>
+					<input name="legalident" type="text" size="30" />
+				</p>
+
+				<p>
+					<label>职务：</label>
+					<input name="post" type="text" size="30" />
+				</p>
+
+				<p>
+					<label>公司网址：</label>
+					<input name="webs" type="text" size="30" alt="http//" class="url" />
+				</p>
+	
+				<p>
+					<label>电话：</label>
+					<input name="tel"  type="text" size="30" class="phone" />
+				</p>
+
+				<p>
+					<label>手机号：</label>
+					<input name="phone" type="text" size="30" class="phone"  />
+				</p>
+
+				<p>
+					<label>邮箱：</label>
+					<input name="email" type="text" size="30" class="email"  />
+				</p>
+				
+				<p>
+					<label>地址：</label>
+					<input name="address" type="text" size="30" />
+				</p>
+	
+				<p>
+					<label>邮编：</label>
+					<input name="zip_code" type="text" size="30" />
+				</p>
+	
+				<p>
+					<label>营业执照号：</label>
+					<input name="business_num"  type="text" size="30"  class="required" />
+				</p>
+
+				<p>
+					<label>执照住所地：</label>
+					<input name="business_add"  type="text" size="30"  />
+				</p>
+
+				<p>
+					<label>执照签发日期：</label>
+					<input type="text" name="sdate" class="date" size="30" /><a class="inputDateButton" href="javascript:;">选择</a>
+				</p>
+		
+				<p>
+					<label>执照到期日期：</label>
+					<input type="text" name="edate" class="date" size="30" /><a class="inputDateButton" href="javascript:;">选择</a>
+				</p>
+
+				<p>
+					<label>主要经营范围：</label>
+					<input name="business_scope"  type="text" size="30" />
+				</p>
+	
+				<p>
+					<label>注册资本：</label>
+					<input name="register_capital"  type="text" size="30" />
+				</p>
+
+				<p>
+					<label>组织机构代码：</label>
+					<input name="organiz_code"  type="text" size="30" class="required" />
+				</p>
+		
+		<div class="divider"></div>
+		
+				<p>
+					<label>建档日期：</label>
+					<input name="cdate" readonly="readonly" type="text" size="30" />
+				</p>
+				<p>
+					<label>建档人员：</label>
+					<input name="cperson" readonly="readonly" type="text" size="30" />
+				</p>
+				
+		</div>
+			
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+</div>

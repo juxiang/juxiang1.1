@@ -1,0 +1,54 @@
+<include file="Public:pagerForm" />
+
+<div class="page">
+<div class="pageHeader" layoutH="414">
+       <h1>说明：</h1>
+</div>
+
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="__URL__/addText.html" target="dialog" mask="true"><span>文本回复</span></a></li>
+			<li><a class="add" href="__URL__/foreverdelete/id/{sid_node}/navTabId/__MODULE__" target="ajaxTodo" calback="navTabAjaxMenu" title="你确定要删除吗？" warn="请选择节点"><span>单图文回复</span></a></li>
+			<li><a class="add" href="__URL__/edit/id/{sid_node}" target="dialog" mask="true" warn="请选择节点"><span>单图文回复</span></a></li>
+			<li><a class="add" href="__URL__/keywordResponse" target="navTab" mask="true"><span>关键字回复首页</span></a></li>
+		</ul>
+	</div>
+	<div id='tableList'>
+	<table class="list" width="100%" layoutH="114">
+		<thead>
+		<tr>
+			<th width="30">关键字</th>
+			<th width="35">自动回复消息类型</th>
+			<th width="200">内容预览</th>
+			<th width="100">操作</th>
+		</tr>
+		</thead>
+		<tbody>
+		<volist id="vo" name="list">
+			<tr target="sid_node" rel="{$vo['id']}">
+				<td>{$vo.keyword}</td>
+				<td>{$vo.responseType}</td>
+				<td>
+				<eq name="vo['responseType']" value="text">
+					{$vo.Content|htmlspecialchars_decode} 
+				</eq>
+				</td>
+				<td>
+				<a href="__URL__/edit/id/{$vo['id']}" target="dialog" rel="__MODULE__">[编辑]</a>
+				&nbsp;|&nbsp;<a href="__URL__/foreverdelete/id/{$vo['id']}" target="ajaxTodo" rel="__MODULE__">[删除]</a>
+				</td>
+			</tr>
+		</volist>
+		</tbody>
+	</table>
+	</div>
+<!--     <div class="panelBar">
+		<div class="pages">
+			<span>共{$totalCount}条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
+	</div> -->
+
+</div>
+</div>

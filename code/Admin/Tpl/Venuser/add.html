@@ -1,0 +1,49 @@
+
+<script language="JavaScript">
+<!--
+function checkName(){
+	ThinkAjax.send('__URL__/checkVenname/','ajax=1&account='+$F('account'));
+}
+//-->
+</script>
+
+
+<div class="pageContent">
+	
+	<form method="post" action="__URL__/insert/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<div class="pageFormContent" layoutH="58">
+
+	         	<p>
+	         		<label>客 户 编号：</label>
+					<input id='venno' name="venno" type="text" size="30" value="{$vo.cat_id}" readonly="readonly"/>
+				</p>
+
+				<p>
+					<label>客户名称：</label>
+					<input name="venname" class="required" type="text" size="30" value="{$gdCat[$vo[cat_id]]}" />
+					<dd>
+                          <input name="cat.title" value="{$gdCat[$vo[cat_id]]}" type="text" readonly/>
+                          <a class="btnLook" href="__URL__/treeLookup" lookupGroup="cat" target="dalog" mask="true">查找带回</a>	
+                     </dd>
+				</p>
+
+				<p>
+					<label>用户编码：</label>
+					<input name="legalperson" type="text" size="30" readonly="readonly" />
+				</p>
+
+				<p>
+					<label>用户名称：</label>
+					<input name="legalident" type="text" size="30" />
+				</p>
+			</div>
+			
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+</div>

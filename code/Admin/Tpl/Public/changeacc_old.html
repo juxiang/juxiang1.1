@@ -1,0 +1,72 @@
+<div class="page">
+	<div class="pageContent">
+		
+	<form method="post" action="__URL__/changeaccount/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<input type="hidden" name="id" value="{$vo.id}">
+		
+		<div class="searchBar">
+		<ul class="searchContent">
+			<li>
+				<label>客户编码:</label>
+				<input class="textInput" name="venno" value="{$_REQUEST['venno']}" type="text">
+			</li>	  
+			<li>
+				<label>客户名称:</label>
+				<input class="textInput" name="venname"  value="{$_REQUEST['venname']}"  type="text">
+			</li>
+		</ul>
+		<div class="subBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">查询</button></div></div></li>
+			</ul>
+		</div>
+	</div>
+	
+		<div class="pageFormContent" layoutH="58">
+			<table class="list" width="100%" layoutH="116">
+				<thead>
+						<tr>
+								<th width="12%" >单位编码</th>
+								<th>单位名称</th>
+		                        <th width="12%" >邮箱</th>
+		                        <th width="8%" >手机号</th>
+		                        <th width="80">查找带回</th>						  
+		                </tr>
+				</thead>
+				<tbody>
+					<volist id="vo" name="list">
+			                    <tr target="sid_user" rel="{$vo['id']}">
+			                    	<td>{$vo['venno']}</td>
+									<td>{$vo['venname']}</td>
+			                        <td>{$vo['email']}</td>
+			                        <td>{$vo['phone']}</td>
+			                        <td>
+					<a class="btnSelect" href="javascript:$.bringBack(venno:'{$vo['venno']}', venname:'{$vo['venname']}'})" title="查找带回">选择</a>
+				</td>
+								
+			                    </tr>
+					</volist>
+				</tbody>
+			</table>	
+			
+			<div class="panelBar">
+		<div class="pages">
+			<span>每页</span>
+
+			<select name="numPerPage" onchange="dwzPageBreak({targetType:dialog, numPerPage:'10'})">
+				<option value="10" selected="selected">10</option>
+				<option value="20">20</option>
+				<option value="50">50</option>
+				<option value="100">100</option>
+			</select>
+			
+		</div>
+		<div class="pagination" targetType="dialog" totalCount="2" numPerPage="10" pageNumShown="1" currentPage="1"></div>
+	</div>
+		</div>
+		
+		
+	</form>
+	
+	</div>
+</div>

@@ -1,0 +1,18 @@
+TD { 
+FONT-FAMILY: "Verdana", "宋体"; FONT-SIZE: 12px; LINE-HEIGHT: 130%; letter-spacing:1px 
+} 
+A:link { 
+COLOR: #990000; FONT-FAMILY: "Verdana", "宋体"; FONT-SIZE: 12px; TEXT-DECORATION: none; letter-spacing:1px 
+} 
+A:visited { 
+COLOR: #990000; FONT-FAMILY: "Verdana", "宋体"; FONT-SIZE: 12px; TEXT-DECORATION: none; letter-spacing:1px 
+} 
+A:active { 
+COLOR: #990000; FONT-FAMILY: "Verdana", "宋体"; FONT-SIZE: 12px; TEXT-DECORATION: none; letter-spacing:1px 
+} 
+A:hover { 
+COLOR: #ff0000; FONT-FAMILY: "Verdana", "宋体"; FONT-SIZE: 12px; TEXT-DECORATION: underline; letter-spacing:1px 
+} 
+.Menu { 
+COLOR:#000000; FONT-FAMILY: "Verdana", "宋体"; FONT-SIZE: 12px; CURSOR: hand 
+} 

@@ -1,0 +1,54 @@
+<include file="Public:pagerForm" />
+
+<div class="page">
+<div class="pageHeader" >
+       <h1>说明：一级分类（即微信一级菜单）最多添加3个；二级分类（即微信二级菜单）最多添加5个。</h1>
+</div>
+
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="__URL__/add" target="dialog" mask="true"><span>一级菜单添加</span></a></li>
+			<li><a class="delete" href="__URL__/foreverdelete/id/{sid_node}/navTabId/__MODULE__" target="ajaxTodo" calback="navTabAjaxMenu" title="你确定要删除吗？" warn="请选择节点"><span>删除</span></a></li>
+			<li><a class="edit" href="__URL__/edit/id/{sid_node}" target="dialog" mask="true" warn="请选择节点"><span>编辑</span></a></li>
+			<li><a class="icon" href="__URL__/publish/navTabId/__MODULE__" target="ajaxTodo" calback="navTabAjaxMenu" title="你确定要发布菜单吗？" ><span>菜单发布</span></a></li>
+		</ul>
+	</div>
+	<table class="list" width="100%" layoutH="114">
+		<thead>
+		<tr>
+			<th width="200">菜单名称</th>
+			<th width="20">排序</th>
+			<th width="150">操作</th>
+		</tr>
+		</thead>
+		<tbody>
+		<volist id="vo" name="list">
+			<tr target="sid_node" rel="{$vo['id']}">
+				<td><a href="__URL__/edit/id/{$vo['id']}" target="dialog" rel="__MODULE__">{:str_repeat('....',$vo['lv'])}└-{:str_repeat('--',$vo['lv'])}{$vo['title']}</a></td>
+				<td>{$vo.sort}</td>
+				<td>
+				<eq name="vo['level']" value="1">
+				<a href="__URL__/add2/pid/{$vo['id']}" target="dialog" rel="__MODULE__">[添加子类]</a>&nbsp;|&nbsp; 
+				</eq>
+				<a href="__URL__/edit/id/{$vo['id']}" target="dialog" rel="__MODULE__">[编辑]</a>
+				<eq name="vo['model']" value="1">
+				<if condition="($vo.level neq 1) AND ($vo.model eq 1)">
+				&nbsp;|&nbsp;<a href="{$vo['value']}" target="_blank" rel="__MODULE__">[预览]</a>
+				</if>
+				</eq>
+				&nbsp;|&nbsp;<a href="__URL__/foreverdelete/id/{$vo['id']}" target="ajaxTodo" rel="__MODULE__">[删除]</a>
+				</td>
+			</tr>
+		</volist>
+		</tbody>
+	</table>
+    <div class="panelBar">
+		<div class="pages">
+			<span>共{$totalCount}条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
+	</div>
+
+</div>
+</div>

@@ -1,0 +1,65 @@
+<include file="Public:pagerForm" />
+
+<div class="page">
+    <div class="pageHeader">
+        <form rel="pagerForm" onsubmit="return navTabSearch(this);" action="__URL__" method="post">
+            <div class="searchBar">
+                <ul class="searchContent">
+                    <li>
+                        <label>用户名：</label>
+                        <input type="text" name="user_name" value=""/>
+                    </li>
+                </ul>
+                <div class="subBar">
+                    <ul>
+                        <li><div class="buttonActive"><div class="buttonContent"><button type="submit">查询</button></div></div></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </div>
+
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="__URL__/add"  target="dialog" mask="true" rel="lookupCat"><span>新增</span></a></li>
+			<li><a class="delete" href="__URL__/foreverdelete/id/{sid_user}/navTabId/__MODULE__" target="ajaxTodo" title="你确定要删除吗？" warn="请选择用户"><span>删除</span></a></li>
+			<li><a class="edit" href="__URL__/edit/id/{sid_user}" rel="lookupCat" target="dialog" mask="true" warn="请选择用户"><span>编辑</span></a></li>
+		</ul>
+	</div>
+
+	<table class="list" width="100%" layoutH="116">
+		<thead>
+		<tr>
+			<th>单位名称</th>
+                        <th width="15%" >职务</th>
+                        <th width="15%" >姓名</th>
+                        <th width="15%" >号码</th>
+                        <th width="15%" >安装位置</th>
+                        <th width="100">操作</th>
+                </tr>
+		</thead>
+		<tbody>
+		<volist id="vo" name="list">
+                    <tr target="sid_user" rel="{$vo['id']}">
+                        <td><a href="__URL__/edit/id/{$vo['id']}" target="dialog" rel="lookupCat" mask="true"  title="{$vo.user_name}--信息编辑">{$vo['unit_name']}</a></td>
+                        <td>{$vo['job']}</td>
+                        <td>{$vo['user_name']}</td>
+                        <td>{$vo['phone']}</td>
+                        <td>{$vo['location']}</td>
+                        <td><a href="__URL__/edit/id/{$vo['id']}" rel="lookupCat" target="dialog">编辑</a></td>
+                    </tr>
+		</volist>
+		</tbody>
+	</table>
+
+	<div class="panelBar">
+		<div class="pages">
+			<span>共{$totalCount}条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
+	</div>
+
+</div>
+
+</div>

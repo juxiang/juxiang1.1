@@ -1,0 +1,123 @@
+
+    <div class="pageContent">
+
+        <form method="post" action="__URL__/update/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxMenu)">
+            <input type="hidden" name="user_id" value="<?php echo $_SESSION[C('USER_AUTH_KEY')] ?>"/>
+            <input type="hidden" name="id" value="{$vo.id}" />
+			
+			
+            <div class="pageFormContent" layoutH="58">
+            
+			 	<p>
+	         		<label>客 户 编号：</label>
+					<input id='venno' name="venno" type="text" size="30" value="{$vo.venno}" readonly="readonly"/>
+				</p>
+
+				<p>
+					<label>客户名称：</label>
+					<input name="venname" class="required" type="text" size="30" value="{$vo.venname}" alt="请输入客户名称"/>
+				</p>
+
+				<p>
+					<label>法人姓名：</label>
+					<input name="legalperson" type="text" value="{$vo.legalperson}" size="30" />
+				</p>
+
+				<p>
+					<label>法人代表身份证号：</label>
+					<input name="legalident" type="text" value="{$vo.legalident}" size="30" />
+				</p>
+
+				<p>
+					<label>职务：</label>
+					<input name="post" type="text" value="{$vo.post}"  size="30" />
+				</p>
+
+				<p>
+					<label>公司网址：</label>
+					<input name="webs" type="text" size="30" value="{$vo.webs}"  alt="http//" class="url" />
+				</p>
+	
+				<p>
+					<label>电话：</label>
+					<input name="tel"  type="text" size="30" value="{$vo.tel}"  class="phone" />
+				</p>
+
+				<p>
+					<label>手机号：</label>
+					<input name="phone" type="text" size="30"  value="{$vo.phone}" class="phone"  />
+				</p>
+
+				<p>
+					<label>邮箱：</label>
+					<input name="email" type="text" size="30" value="{$vo.email}"  class="email"  />
+				</p>
+				
+				<p>
+					<label>地址：</label>
+					<input name="address" type="text"  value="{$vo.address}"  size="30" />
+				</p>
+	
+				<p>
+					<label>邮编：</label>
+					<input name="zip_code" type="text"  value="{$vo.zip_code}"  size="30" />
+				</p>
+	
+				<p>
+					<label>营业执照号：</label>
+					<input name="business_num"  type="text"  value="{$vo.business_num}" size="30" class="required" />
+				</p>
+
+				<p>
+					<label>执照住所地：</label>
+					<input name="business_add"  type="text"  value="{$vo.business_add}"  size="30" />
+				</p>
+
+				<p>
+					<label>执照签发日期：</label>
+					<input type="text" name="sdate" class="date" value="{$vo.sdate}"   size="30" /><a class="inputDateButton" href="javascript:;">选择</a>
+				</p>
+		
+				<p>
+					<label>执照到期日期：</label>
+					<input type="text" name="edate" class="date"  value="{$vo.edate}" size="30" /><a class="inputDateButton" href="javascript:;">选择</a>
+				</p>
+
+				<p>
+					<label>主要经营范围：</label>
+					<input name="business_scope"  type="text"  value="{$vo.business_scope}"  size="30" />
+				</p>
+	
+				<p>
+					<label>注册资本：</label>
+					<input name="register_capital"  type="text"  value="{$vo.register_capital}"  size="30" />
+				</p>
+
+				<p>
+					<label>组织机构代码：</label>
+					<input name="organiz_code"  type="text" value="{$vo.organiz_code}" size="30" class="required" />
+				</p>
+		
+		<div class="divider"></div>
+			
+				<p>
+					<label>最新修改时间：</label>
+					<input name="mdate" readonly="readonly"  value="{$vo.mdate|date='Y-m-d H:i:s',###}" type="text" size="30" />
+				</p>
+				<p>
+					<label>最新修改人员：</label>
+					<input name="mperson" readonly="readonly" value="{$vo.mperson}"  type="text" size="30" />
+				</p>
+            </div>
+
+            <div class="formBar">
+                <ul>
+                    <li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+                    <li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+                </ul>
+            </div>
+        </form>
+
+    </div>
+
+

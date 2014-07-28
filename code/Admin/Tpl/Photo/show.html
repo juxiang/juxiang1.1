@@ -1,0 +1,75 @@
+<include file="Public:pagerForm" />
+
+<div class="page">
+<div class="pageHeader">
+        <form rel="pagerForm" onsubmit="return navTabSearch(this);" action="__URL__" method="post">
+            <div class="searchBar">
+                <ul class="searchContent">
+                    <li>
+                        <label>相册：</label>
+                        <select name="aid">
+                         <option value="">请选择</option>
+                        <volist id="vo" name="listall">
+                        	<option value="{$vo['id']}">{:str_repeat('....',$vo['lv'])}{$vo['title']}</option>
+                        </volist>
+                        </select>
+                    </li>
+                    <li>
+                        <label>图片名称：</label>
+                        <input type="text" name="name" value=""/>
+                    </li>
+                </ul>
+                <div class="subBar">
+                    <ul>
+                        <li><div class="buttonActive"><div class="buttonContent"><button type="submit">查询</button></div></div></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+</div>
+
+<div class="pageContent">
+<!-- 	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="__URL__/add" target="dialog" mask="true"><span>上传图片</span></a></li>
+			<li><a class="delete" href="__URL__/foreverdelete/id/{sid_node}/navTabId/__MODULE__" target="ajaxTodo" calback="navTabAjaxMenu" title="你确定要删除吗？" warn="请选择节点"><span>删除</span></a></li>
+			<li><a class="edit" href="__URL__/edit/id/{sid_node}" target="dialog" mask="true" warn="请选择节点"><span>编辑</span></a></li>
+		</ul>
+	</div> -->
+	<div class="pagelPhoto">
+		<volist name='list' id='vo'>
+		 	<if condition='$vo.lv eq 0'>
+		 	<a href="__URL__/id/{$vo.id}">
+		 		<img height='40' width='40' src='#'/>
+		 		{$vo.title}
+		 		{$vo.name}
+		 	</a>
+		 	 <volist name="$vo['photo']" id='po'>
+		 		{$po.name}
+		 	</volist>
+		 	</if>
+		 	<eq name="mod" value="5"><br/></eq>
+		 </volist>
+			
+	</div>
+	
+
+	<table class="list" width="100%" layoutH="114">
+		<tbody>
+		<volist id="vo" name="list">
+			<tr target="sid_node" rel="{$vo['id']}">
+				<td><a href="__URL__/show/id/{$vo['id']}" target="navTab" rel="__MODULE__"> {:str_repeat('....',$vo['lv'])}{:str_repeat('--',$vo['lv'])}<img height='20' width='20' src='#'/>{$vo['title']}</a></td>
+				<td><a href="__URL__/add/aid/{$vo['id']}" target="navTab" rel="__MODULE__">[添加图片]</a></td>
+			</tr>
+		</volist>
+		</tbody>
+	</table>
+    <div class="panelBar">
+		<div class="pages">
+			<span>共{$totalCount}条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
+	</div>
+
+</div>
+</div>

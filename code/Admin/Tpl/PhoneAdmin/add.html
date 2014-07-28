@@ -1,0 +1,51 @@
+
+<div class="pageContent">
+
+    <form method="post" action="__URL__/insert/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxMenu)">
+        <input type="hidden" name="user_id" value="<?php echo $_SESSION[C('USER_AUTH_KEY')] ?>"/> 
+        <input type="hidden" name="pid" value="{$pid}">
+        <div class="pageFormContent" layoutH="58">
+            <div class="unit">
+                <label>单位名称：</label>
+                <input type="text" class="required"   name="unit_name">
+            </div>
+            <div class="unit">
+                <label>职务：</label>
+                <input type="text" class="required"   name="job">
+            </div>
+            <div class="unit">
+                <label>姓名：</label>
+                <input type="text" class="required"   name="user_name">
+            </div>
+            <div class="unit">
+                <label>号码：</label>
+                <input type="text" class="required"   name="phone">
+            </div>
+            <div class="unit">
+                <label>安装位置：</label>
+                <input type="text" class="required"   name="location" value="办公室">
+            </div>
+            <div class="unit" >
+                    <dt>所属编制：</dt>
+                    <dd>
+                        <input name="cat.id" type="hidden"/>
+                        <input class="required" name="cat.title" type="text" readonly/>
+                        <a class="btnLook" href="__URL__/treeLookup" lookupGroup="cat" target="dalog" mask="true">查找带回</a>
+                    </dd>
+            </div>
+            <div class="unit">
+                <label>排序：</label>
+                <input type="text" class="number required"   name="inner_seq">
+            </div>
+        </div>
+
+        <div class="formBar">
+            <ul>
+                <li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+                <li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+            </ul>
+        </div>
+    </form>
+
+</div>
+

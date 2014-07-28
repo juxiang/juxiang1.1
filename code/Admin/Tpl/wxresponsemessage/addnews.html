@@ -1,0 +1,59 @@
+<script>
+	
+</script>
+    <div class="pageContent">
+        <form method="post" action="__URL__/insertnews/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this,dialogAjaxMenu)">
+            <input type="hidden" name="user_id" value="<?php echo $_SESSION[C('USER_AUTH_KEY')] ?>"/>
+            <input type="hidden" name="ArticleCount" value="{$_GET['c']}">
+			<input type="hidden" name="venno" value="{$Think.session.login_venno}">
+            <div class="pageFormContent" layoutH="154">
+            <div class="unit">
+				<if condition="$Think.get.kyw eq keyword">
+				<label>关键字:</label>
+				<input name='keyword' class="required" maxlength='6'/>
+				<small>不得超过6个字</small>
+				<else />
+					<input name='keyword' type='hidden' value="subscribe">
+					<h1>用户首次关注账号时，自动回复的消息设置。</h1>
+				</if>
+				<hr>
+			</div>
+			<for start="0" end="$count" >
+			<h1>图文{$i+1}:</h1>
+				<div class="unit" >
+                    <dt>图片:</dt>
+                    <dd>
+                        <input name="photo{$i}.id" value='' type="hidden"/>
+                        <input name="photo{$i}.picpath_s" value='' type="hidden"/>
+                        <input class="required" name="photo{$i}.name" type="text" readonly/>
+                        <a class="btnLook" href="__URL__/treeLookup" lookupGroup="photo{$i}" target="dalog" mask="true">封面选择</a>	
+                    </dd>
+                </div>
+           	<div class="unit" type="text">
+				<label>标题:</label>
+				<input name='Title[]' class="required"/>
+			</div>
+			<div class="unit">
+				<label>摘要:</label>
+				<input name='Description[]' type="text"/>
+			</div>
+			<div class="unit">
+				<label>点击跳转链接:</label>
+				<input name='Url[]' type="text"/>
+			</div><br />
+			<hr />
+			</for>
+            </div>
+
+            <div class="formBar">
+                <ul>
+                    <li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+                    <li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+                </ul>
+            </div>
+        </form>
+
+    </div>
+
+
+

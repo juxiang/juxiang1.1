@@ -1,0 +1,85 @@
+<div class="page">
+	<div class="layoutBox">
+	<form method="post" action="__URL__/updatewxce/navTabId/__MODULE__" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this,navTabAjaxDone);">
+		<input type="hidden" name="id" value="{$vo.id}" />
+		<input type="hidden" name="mdate" value="<?php echo time() ?>"/>
+        <input type="hidden" name="user_id" value="<?php echo $_SESSION[C('USER_AUTH_KEY')] ?>"/>
+       
+		<div class="pageFormContent" layoutH="58">
+
+			<p >
+	         		<label>客 户 编号：</label>
+					<input id='venno' name="venno" type="text" size="30" value="{$vo.venno}" readonly="readonly"/>
+				</p>
+				
+				<p>
+					<label>客户名称：</label>
+					<input name="venname" class="required" type="text" size="30" value="{$vo.venname}" readonly="readonly"/>
+				</p>
+				
+          		<div class="divider"></div>
+			
+				
+
+				<p>
+					<label>微信token：</label>
+					<input name="wxtoken" type="text" value="{$vo.wxtoken}" class="required"  size="30" />
+				</p>
+
+				<p>
+					<label>微信原始id：</label>
+					<input name="openid" type="text" size="30" value="{$vo.openid}" class="required"  />
+				</p>
+
+				<p>
+					<label>微信appid：</label>
+					<input name="wx_aid" type="text" size="30"  value="{$vo.wx_aid}" class="required"   />
+				</p>
+
+				<p>
+					<label>微信secretid：</label>
+					<input name="wx_secret" type="text" size="30" value="{$vo.wx_secret}"  class="required"  />
+				</p>
+				<p>
+					<label>微信验证url：</label>
+					<input name="wxurl" type="text" size="30"  value="{$vo.wxurl}" class="required"   />
+				</p>
+
+				<p>
+					<label>微信注册验证码：</label>
+					<input name="mes_code" type="text" size="30" value="{$vo.mes_code}"  class="required"  />
+				</p>
+				<p>
+					<label>菜单上次发布时间：</label>
+					<input type="text" name="subtime" class="date" value="{$vo.subtime}"   size="30" /><a class="inputDateButton" href="javascript:;">选择</a>
+				</p>
+				
+				<p >
+					
+					<a href="__URL__/downloadImg/venno/{$vo.venno}/file/wxbook_file/navTabId/__MODULE__" >微信授权书</a>
+					
+				</p>
+				<p >
+					<input name="shouquanshu" type="file"  class="accept" value="{$vo.wxbook_file}"/>
+					
+				</p>
+				<p >
+					
+
+					<a href="__URL__/downloadImg/venno/{$vo.venno}/file/wxdcode_file/navTabId/__MODULE__" >微信二维码：</a>
+					</p>
+					<p class="unit">
+					<input name="erweima" type="file"  value="{$vo.wxdcode_file}"/>
+				
+					</p>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+	</div>
+</div>

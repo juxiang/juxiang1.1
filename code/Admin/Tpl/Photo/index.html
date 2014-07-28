@@ -1,0 +1,77 @@
+<include file="Public:pagerForm" />
+
+<div class="page">
+<div class="pageHeader">
+        <form rel="pagerForm" onsubmit="return navTabSearch(this);" action="__URL__" method="post">
+            <div class="searchBar">
+                <ul class="searchContent">
+                    <li>
+                        <label>相册：</label>
+                        <select name="aid">
+                         <option value="">请选择</option>
+                        <volist id="vo" name="listall">
+                        	<option value="{$vo['id']}">{:str_repeat('....',$vo['lv'])}{$vo['title']}</option>
+                        </volist>
+                        </select>
+                    </li>
+                    <li>
+                        <label>图片名称：</label>
+                        <input type="text" name="name" value=""/>
+                    </li>
+                </ul>
+                <div class="subBar">
+                    <ul>
+                        <li><div class="buttonActive"><div class="buttonContent"><button type="submit">查询</button></div></div></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+</div>
+
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="__URL__/add" target="dialog" mask="true" ><span>上传图片</span></a></li>
+			<li><a class="delete" href="__URL__/listDelete/navTabId/__MODULE__" target="selectedTodo" posttype="string" rel="id" title="确实要删除这些记录吗？" warn="请至少选择一条记录"><span>批量删除图片</span></a></li>
+			<li><a class="edit" href="__URL__/edit/id/{sid_node}" target="dialog" mask="true" warn="请选择节点"><span>编辑</span></a></li>
+		</ul>
+	</div>
+
+	<table class="list" width="100%" layoutH="114">
+		<thead>
+			<tr>
+				<th width="30"><input type="checkbox" group="id" class="checkboxCtrl"></th>
+				<th width="60">编号</th>
+				<th>图片名称</th>
+				<th width="40">图	片</th>
+				<th>所属相册</th>				
+				<th>排序值</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+		<volist id="vo" name="list">
+		<tr target="sid_node" rel="{$vo['id']}"><td>
+		<input type="checkbox" name="id" value="{$vo['id']}" />
+		</td>
+		<td>{$vo.id}</td>
+		<td>{$vo.name}</td>
+		<td><a href='{$vo.picpath_m}' target='_blank'><img src="{$vo.picpath_s}" height='40' width='40'></a></td>
+		<td>{$vo.title}</td>
+		<td>{$vo.sort}</td>
+		<td>
+		<a class="edit" href="__URL__/edit/id/{$vo['id']}/navTabId/__MODULE__" target="dialog" ><span>编辑</span></a>&nbsp;|&nbsp;
+		<a class="delete" href="__URL__/delete/id/{$vo['id']}/navTabId/__MODULE__" target="ajaxTodo" title="确实要删这条记录吗？"><span>删除</span></a></td>
+		</tr>
+		</volist>
+		</tbody>
+	</table>
+    <div class="panelBar">
+		<div class="pages">
+			<span>共{$totalCount}条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
+	</div>
+
+</div>
+</div>

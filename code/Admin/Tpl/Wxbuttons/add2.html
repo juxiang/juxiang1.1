@@ -1,0 +1,46 @@
+
+<div class="pageContent">
+
+	<form method="post" action="__URL__/insert/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxMenu)">
+		<input type="hidden" name="user_id" value="<?php echo $_SESSION[C('USER_AUTH_KEY')] ?>"/> 
+		<input type="hidden" name="pid" value="{$pid}">
+		<div class="pageFormContent" layoutH="58">
+			<div class="unit">
+				<label>菜单名称：</label>
+				<input type="text" class="required"  name="title">
+			</div>
+			<div class="unit">
+				<label>菜单级别：</label>
+				<select name="level">
+					<!-- <option value="1">含子菜单</option> -->
+					<option value="0" selected>不含子菜单</option>
+				</select>
+			</div>
+			<div class="unit">
+				<label>菜单类型：</label>
+				<select name="model">
+					<option value="1" seleced>视图</option>
+					<!-- <option value="2">点击</option> -->
+				</select>
+			</div>
+			<div class="unit">
+				<label>定义菜单值：</label>
+				<input type="text"  name="value">
+				<small>可以稍后再填写</small>
+			</div>
+            <div class="unit">
+				<label>排序：</label>
+				<input type="text" class="required number" name="sort" value="10">
+			</div>
+		</div>
+		
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+
+</div>
+
