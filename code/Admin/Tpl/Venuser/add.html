@@ -1,49 +1,46 @@
 
-<script language="JavaScript">
-<!--
-function checkName(){
-	ThinkAjax.send('__URL__/checkVenname/','ajax=1&account='+$F('account'));
-}
-//-->
-</script>
 
 
 <div class="pageContent">
-	
-	<form method="post" action="__URL__/insert/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
-		<div class="pageFormContent" layoutH="58">
 
-	         	<p>
-	         		<label>客 户 编号：</label>
-					<input id='venno' name="venno" type="text" size="30" value="{$vo.cat_id}" readonly="readonly"/>
-				</p>
+    <form method="post" action="__URL__/insert/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxMenu)">
+        <input type="hidden" name="user_id" value="<?php echo $_SESSION[C('USER_AUTH_KEY')] ?>"/> 
+        <input type="hidden" name="pid" value="{$pid}">
+        <div class="pageFormContent" layoutH="58">
+            <div class="unit" >
+                    <dt>用户账号：</dt>
+                   
+                        <input name="cat.account" value="" type="text" readonly/>
+						 </div>
+            <div class="unit" >
+						<dt>用户名称：</dt>
+                    <dd>
+                        <input class="required" name="cat.nickname" type="text" readonly/>
+                        <a class="btnLook" href="__URL__/treeLookup" lookupGroup="cat" target="dalog">查找带回</a>	
+                    </dd>
+            </div>
+            <div class="unit" >
+                    <dt>客户编号：</dt>
+                   
+                        <input name="venno" value="{$Think.session.login_venno}" type="text" readonly/>
+						 </div>
+            <div class="unit" >
+						<dt>客户名称：</dt>
+                    <dd>
+                        <input class="required" value="{$Think.session.login_venname}"  name="venname" type="text" readonly/>
+                      
+                    </dd>
+            </div>
+           
+        </div>
 
-				<p>
-					<label>客户名称：</label>
-					<input name="venname" class="required" type="text" size="30" value="{$gdCat[$vo[cat_id]]}" />
-					<dd>
-                          <input name="cat.title" value="{$gdCat[$vo[cat_id]]}" type="text" readonly/>
-                          <a class="btnLook" href="__URL__/treeLookup" lookupGroup="cat" target="dalog" mask="true">查找带回</a>	
-                     </dd>
-				</p>
+        <div class="formBar">
+            <ul>
+                <li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+                <li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+            </ul>
+        </div>
+    </form>
 
-				<p>
-					<label>用户编码：</label>
-					<input name="legalperson" type="text" size="30" readonly="readonly" />
-				</p>
-
-				<p>
-					<label>用户名称：</label>
-					<input name="legalident" type="text" size="30" />
-				</p>
-			</div>
-			
-		<div class="formBar">
-			<ul>
-				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
-				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
-			</ul>
-		</div>
-	</form>
-	
 </div>
+
