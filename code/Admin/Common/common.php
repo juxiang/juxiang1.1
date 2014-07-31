@@ -568,3 +568,11 @@ function msubstr($str, $start=0, $length, $charset="utf-8", $suffix=true) {
 	}
 	return $suffix ? $slice : $slice;
 }
+//post请求
+function PostRequest($url){
+	$ch=curl_init($url);
+	curl_setopt($ch, CURLOPT_HEADER, false);
+	curl_setopt($ch, CURLOPT_POST, TRUE);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+	return curl_exec($ch);
+}
