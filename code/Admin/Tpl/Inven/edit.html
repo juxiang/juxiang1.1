@@ -1,0 +1,44 @@
+<div class="pageContent">
+
+	<form method="post" action="__URL__/update/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<input type="hidden" name="user_id" value="<?php echo $_SESSION[C('USER_AUTH_KEY')] ?>"/> 
+		<input type="hidden" name="id" value="{$data.id}">
+		<input type="hidden" name="invenno" value="{$data.invenno}">
+		<div class="pageFormContent" layoutH="58">
+			<div class="unit">
+				<label>系统存货分类：</label>
+				<select name='syscno'>
+				<volist name='list' id='vo'>
+					<eq name='vo.syscno' value='$data.syscno'>
+					<option value='{$vo.syscno}' selected>{:str_repeat('....',$vo['lv'])}└-{:str_repeat('--',$vo['lv'])}{$vo.syscname}</option>
+					<else/>
+						<option value='{$vo.syscno}'>{:str_repeat('....',$vo['lv'])}└-{:str_repeat('--',$vo['lv'])}{$vo.syscname}</option>
+					</eq>
+				</volist>
+				</select>
+			</div>
+            <div class="unit">
+				<label>名称：</label>
+				<input type="text" class="required" value="{$data.invenname}" name="invenname">
+			</div>
+			<div class="unit" >
+                    <dt>图片:</dt>
+                    <dd>
+                        <input name="photo.id" value='{$data.photoid}' type="hidden"/>
+                        <input name="photo.picpath_s" value='' type="hidden"/>
+                        <input class="required" name="photo.name" type="text" value='{$data.pname}' readonly/>
+                        <a class="btnLook" href="__URL__/treeLookup" lookupGroup="photo" target="dalog" mask="true">选择</a>	
+                    </dd>
+                </div>
+		</div>
+		
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+
+</div>
+
