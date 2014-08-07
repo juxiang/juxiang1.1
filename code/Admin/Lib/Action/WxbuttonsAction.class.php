@@ -2,7 +2,11 @@
 class WxbuttonsAction extends CommonAction{
 	public function index() {
 		$wx = M("Wxbuttons");
-		$catList=$wx->where($con)->field('id,pid,title,level,model,value,sort')->order('pid,sort')->select();
+		$con=array(
+				'status'=>1,
+				'venno'=>session('login_venno')
+		);
+		$catList=$wx->where($con)->order('pid,sort')->select();
 		$list = outTreeList(arrToTree($catList,0),0);
 		//p($list);die;
 		$this->assign('list', parent::GetCurPage($list));
@@ -10,9 +14,6 @@ class WxbuttonsAction extends CommonAction{
 	}	
 	public function _before_add() {
 		$pid = 0;
-		/* if ($_GET['pid'] != '') {
-			$pid = $_GET['pid'];
-		} */
 		$this->assign('pid', $pid);
 	}
 	public function add2() {
@@ -30,9 +31,10 @@ class WxbuttonsAction extends CommonAction{
 			$this->error ( $model->getError () );
 		}
 		$data=$model->create();
+		$data['ppid']=I('lv');
 		$data['venno']=session('login_venno');
 		$oneb=$model->where('pid=0')->count();
-		$twob=$model->where('pid='.$data['pid'])->count();
+		$twob=$model->where(array('pid='.$data['pid'],'ppid=2'))->count();
 		if(empty($data['pid'])){
 			if($oneb==3){
 				$this->error("新增失败！一级菜单最多只能添加3个！");
@@ -54,7 +56,13 @@ class WxbuttonsAction extends CommonAction{
 	}
 	//微信菜单发布
 	public function publish(){
-		
+		$buttons=A('Weixin');
+		$return=$buttons->buttonsPublish();
+		if($return==1){
+			$this->success('自定义菜单发布成功！');
+		}else {
+			$this->error($return);
+		}
 	}
 	public function foreverdelete() {
 		$model = M("Wxbuttons");

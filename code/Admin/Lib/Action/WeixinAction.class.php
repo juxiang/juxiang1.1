@@ -4,17 +4,27 @@ class WeixinAction extends CommonAction{
 	private $appid;
 	private $secret;
 	private $openid;
+	private $errormessage;
 	//自定义菜单发布
 	public function buttonsPublish(){
 		$model=M('wxbuttons');
 		$con=array(
 				'venno' =>session('login_venno'),
+				'ppid'=>array('lt',3),
 		);
 		$menu=$model->where($con)->order('sort')->select();
 		$menu=arrToTree($menu, 0);
 		$buttons=$this->setWeixinbuttons($menu);
-		p($buttons);die;
-		return $this->createMenu($menu);
+		$info=$this->createMenu($menu);
+		if($info['errcode']==0){
+			return 1;
+		}else{
+			$this->errormessage[]='自定义菜单生成出错。错误详情：'.$info['errcode'].','.$info['errmsg'];
+			foreach ($this->errormessage as $k=>$v){
+				$arr.=$v."<br/>";
+			}
+			return $arr;
+		}
 	}
 	//获取微信的APPID,APPSECRET等信息
 	private function getWeixin(){
@@ -24,7 +34,7 @@ class WeixinAction extends CommonAction{
 		);
 		$data=$model->where($con)->field('wx_aid,wx_secret,openid')->find();
 		$this->appid=$data['wx_aid'];
-		$this->wx_secret=$data['wx_secret'];
+		$this->secret=$data['wx_secret'];
 		$this->openid=$data['openid'];
 		return $data;
 	}
@@ -39,9 +49,13 @@ class WeixinAction extends CommonAction{
 			$url=
 			"https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$this->appid."&secret=".$this->secret;
 			$result=$this->https_request($url);
-			session('access_token')=$result["access_token"];
-			session('access_token_expiretime')=time()+7200;
-			return $result["access_token"];
+			if(!empty($result['access_token'])){
+				$_SESSION['access_token']=$result["access_token"];
+				$_SESSION['access_token_expiretime']=time()+7200;
+				return $result["access_token"];
+			}else{
+				$this->errormessage[]='获取accesstoken值出错。错误详情：'.$result['errcode'].','.$result['errmsg'];
+			}
 		}
 	}
 	//远程抓取链接返回值，解密json
@@ -70,12 +84,12 @@ class WeixinAction extends CommonAction{
 		 $info = curl_exec($ch);
 	
 		 if (curl_errno($ch)) {
-		 echo 'Errno'.curl_error($ch);
+		 	echo 'Errno'.curl_error($ch);
 		 }
 	
 		 curl_close($ch);
-	
-		 echo $info;
+		 return json_decode($info,true);
+		 
 	
 	}
 	//获取自定义菜单

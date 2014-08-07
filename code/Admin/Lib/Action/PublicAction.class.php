@@ -197,12 +197,10 @@ class PublicAction extends Action {
 			if($authInfo['account'] =="admin")
 				$where="select t1.* from `wx_vendor` as t1 where t1.status=1 order by t1.venno LIMIT 1";
 			else 
-				$where="select t1.* from `wx_vendor` as t1 left join 'wx_venuser' as t2 on t1.venno=t2.venno "
-						." where t1.status=1 and t2.account='".$authInfo['account']."' order by t1.venno LIMIT 1";
-								
+				$where="select t1.* from `wx_vendor` as  t1 LEFT JOIN 'wx_venuser' as t2 ON t1.venno=t2.venno where t1.status=1 and t2.account='".$authInfo['account']."' LIMIT 1";			
 			$list = M("Vendor")->query($where);
-			
-			
+			//p($where);
+			//p($list);die;
 			if (empty($list) ) {
 				$this->error('帐号没有后台登陆权限！');
 			} else 
