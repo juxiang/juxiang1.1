@@ -1,0 +1,35 @@
+<include file="Public:pagerForm" />
+
+<div class="page" id='invendispage'>
+	<div class="pageContent">
+		<table class="list" width="100%" layoutH="50">
+			<thead>
+				<tr>
+					<th width="120">前端展示分类</th>
+					<th width="60">操	作</th>
+				</tr>
+			</thead>
+			<tbody>
+			<volist id="vo" name="list">
+			<tr target="sid_node" rel="{$vo['id']}">
+			<td>{:str_repeat('....',$vo['lv'])}└-{:str_repeat('--',$vo['lv'])}{$vo.title}</td>
+			<td>
+			<eq name='vo.lv' value='2'>
+			<a href="__URL__/edit/id/{$vo['id']}/cname/{$vo['title']}" target="ajax" rel='invendispage'>[显示设置]</a>
+			</eq>
+			<eq name='vo.lv' value='1'>
+			<a href="{:U('Wxdisplay/index',array('venno'=>$_SESSION['login_venno'],'id'=>$vo['id']))}" target="_blank" >[预	览]</a>
+			</eq>
+			</td>
+			</tr>
+			</volist>
+			</tbody>
+		</table>	
+	    <div class="panelBar">
+			<div class="pages">
+				<span>共{$totalCount}条</span>
+			</div>
+			<div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
+		</div>
+	</div>
+</div>

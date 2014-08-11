@@ -1,0 +1,54 @@
+<div class="page">
+	<div class="pageHeader">
+			<h1>{$_GET['cname']}&nbsp;&nbsp;分类产品显示设置</h1>
+	</div>
+
+	<div class="pageContent">
+		<div class="panelBar">
+			<ul class="toolBar">
+				<li><a class="add" href="__URL__/setDisplay/bid/{$_GET['id']}/navTabId/__MODULE__" target="selectedTodo" posttype="string" rel="invenno" title="确定要展示这些存货吗？" warn="请至少选择一条记录"><span>保存</span></a></li>
+			</ul>
+		</div>
+		<input type="hidden" name="bid" value="{$_GET['id']}">
+		<table class="list" width="100%" layoutH="50">
+			<thead>
+				<tr>
+					<th width="60"><input type="checkbox" group="invenno" class="checkboxCtrl"></th>
+					<th width="220">系统分类</th>
+					<th>存货名称</th>
+					<th width="40">图	片</th>
+				</tr>
+			</thead>
+			<tbody>
+			<volist id='v' name='list1'>
+			<tr target="sid_node" rel="{$v['invenno']}">	
+				<td><a href="__URL__/foreverdelete/id/{$v['proid']}/navTabId/__MODULE__" target="ajaxTodo" title="确实取消展示这条记录吗？">[取消展示]</a></td>
+				<td>{$v.syscname}</td>
+				<td>{$v.invenname}</td>
+				<td><a href='{$v.picpath_m}' target='_blank'><img src="{$v.picpath_s}" height='40' width='40'></a></td>
+			</tr>
+			</volist>
+			
+			<volist id="vo" name="list">
+			<tr target="sid_node" rel="{$vo['id']}"><td>
+			<input type="checkbox" name="invenno" value="{$vo['invenno']}" />
+			</td>
+			<td>{$vo.syscname}</td>
+			<td>{$vo.invenname}</td>
+			
+			<td><a href='{$vo.picpath_m}' target='_blank'><img src="{$vo.picpath_s}" height='40' width='40'></a></td>
+			</tr>
+			</volist>
+			</tbody>
+		</table>
+	    <div class="panelBar">
+			<div class="pages">
+				<span>共{$totalCount}条</span>
+			</div>
+			<div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
+		</div>
+	
+	</div>
+</div>
+
+
