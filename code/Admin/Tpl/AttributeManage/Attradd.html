@@ -1,0 +1,41 @@
+<div class="pageContent">
+
+	<form method="post" action="__URL__/AttrAddhandle/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<input type="hidden" name="user_id" value="<?php echo $_SESSION[C('USER_AUTH_KEY')] ?>"/> 
+		<div class="pageFormContent" layoutH="58">
+			<div class="unit">
+				<label>系统存货分类选择：</label>
+				<select name="syscno" class="required">
+					<volist name='select' id='se'>
+					<option value='{$se.syscno}'>{:str_repeat('....',$se['lv'])}{:str_repeat('--',$se['lv'])}{$se.syscname}</option>
+					</volist>
+				</select>
+			</div>
+			<div class="unit">
+				<label>属性名：</label>
+				<input type="text" class="required"   name="sysaname">
+			</div>
+            <div class="unit">
+				<label>属性类型：</label>
+				<input type="radio" name="typename" value="关键属性" checked="checked" />关键属性 
+				<input type="radio" name="typename" value="销售属性" />销售属性 
+				<input type="radio" name="typename" value="非销售属性" />非销售属性
+			</div>
+			<div class="unit">
+				<label>属性值展示方式：</label>
+				<input type="radio" name="type" value="input" checked="checked" />输入框
+				<input type="radio" name="type" value="checkbox" />多选框 
+				<input type="radio" name="type" value="select" />下拉选择框
+			</div>
+		</div>
+		
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+
+</div>
+

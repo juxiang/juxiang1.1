@@ -115,11 +115,11 @@ class WxresponsemessageAction extends CommonAction
    	}
    }
    public function treeLookup() {
-   	$ph = D("Photo");
-   	$menu = $ph->relation(true)->where('status=1')->select();
-   	$menu = outTreeList(arrToTree($menu,0),0);
-   	$this->assign('menu', $menu);
-   	$this->display();
+	   	$ph = D("Photo");
+	   	$menu = $ph->relation(true)->where('status=1')->select();
+	   	$menu = outTreeList(arrToTree($menu,0),0);
+	   	$this->assign('menu', $menu);
+	   	$this->display();
    }
    public function newsselect(){
    		$this->keyword=$_GET['kyw'];

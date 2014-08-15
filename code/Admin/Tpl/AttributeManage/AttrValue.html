@@ -1,0 +1,60 @@
+<include file="Public:pagerForm" />
+<div class="page" id='page'>
+<div class="pageHeader">
+	<h1>属性值管理</h1>
+        <form rel="pagerForm" onsubmit="return navTabSearch(this);" action="__URL__" method="post">
+            <div class="searchBar">
+                <ul class="searchContent">
+                    <li>
+                        <label>号码：</label>
+                        <input type="text" name="UserNumber" value=""/>
+                    </li>
+                </ul>
+                <div class="subBar">
+                    <ul>
+                        <li><div class="buttonActive"><div class="buttonContent"><button type="submit">查询</button></div></div></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+</div>
+
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="__URL__/add/type/AttrValue" target="ajax" rel='page' ><span>新增</span></a></li>
+			<li><a class="edit" href="__URL__/edit/type/AttrValue" target="ajax" rel='page'><span>编辑</span></a></li>
+			<li><a class="delete" href="__URL__/delete/type/AttrValue" target="ajax" rel='page'><span>删除</span></a></li>
+			<li><a class="icon" href="__URL__" target="ajax" rel='page'><span>返回</span></a></li>
+		</ul>
+	</div>
+
+	<table class="list" width="100%" layoutH="114">
+		<thead>
+			<tr>
+				<th width="60">编号</th>
+				<th width="200">用户号码</th>
+				<th>发送内容</th>
+				<th width="150">发送时间</th>
+			</tr>
+		</thead>
+		<tbody>
+		<volist id="vo" name="list">
+		<tr target="sid_node" rel="{$vo['id']}">
+		<td>{$i}</td>
+		<td>{$vo.UserNumber}</td>
+		<td>{$vo.MessageContent}</td>
+		<td>{$vo.cretime|date='Y-m-d H:i:s',###}</td>
+		</tr>
+		</volist>
+		</tbody>
+	</table>
+    <div class="panelBar">
+		<div class="pages">
+			<span>共{$totalCount}条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
+	</div>
+
+</div>
+</div>

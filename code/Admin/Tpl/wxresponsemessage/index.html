@@ -1,6 +1,6 @@
 <include file="Public:pagerForm" />
 
-<div class="page">
+<div class="page" id="pagebody">
 <div class="pageHeader">
    <form rel="pagerForm" onsubmit="return navTabSearch(this);" action="__URL__" method="post">
             <div class="searchBar">
@@ -26,7 +26,6 @@
             </div>
         </form>
 </div>
-<div id="pagebody">
 <div class="pageContent">
 	<div class="panelBar">
 		<ul class="toolBar">
@@ -35,7 +34,7 @@
 			<li><a class="add" href="__URL__/add" target="ajax" rel='pagebody'><span>群发设置</span></a></li>
 		</ul>
 	</div>
-	<table class="list" width="100%" layoutH="50">
+	<table class="list" width="100%" layoutH="114">
 		<thead>
 		<tr>
 			<th width="30">触发事件/关键字</th>
@@ -75,6 +74,5 @@
 		</div>
 		<div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
 	</div>
-</div>
 </div>
 </div>

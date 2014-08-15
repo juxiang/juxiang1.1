@@ -7,7 +7,9 @@ class AlbumAction extends CommonAction{
 		if(!empty($con)){
 			$list=$pList;
 		}else{
-			$catList = $al->field('id,pid,title')->order('pid,sort')->select();
+			$con['venno']=session('login_venno');
+			$con['status']=1;
+			$catList = $al->where($con)->field('id,pid,title')->order('pid,sort')->select();
 			$list = outTreeList(arrToTree($catList,0),0);
 		}
 		$this->assign('list', parent::GetCurPage($list));

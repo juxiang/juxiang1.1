@@ -3,7 +3,8 @@ class InvenAction extends CommonAction{
 	
 	public function index(){
 		$con=parent::_search('Inven');
-		$con=array('status'=>1,'venno'=>session('login_venno'));
+		$con['status']=1;
+		$con['venno']=session('login_venno');
 		$model=D('InvenView');
 		$list=$model->where($con)->order('syscno,invenno')->select();
 		$this->assign('list',parent::GetCurPage($list));
@@ -58,7 +59,8 @@ class InvenAction extends CommonAction{
 	//图片查找
 	public function treeLookup(){
 		$ph = D("Photo");
-		$menu = $ph->relation(true)->where('status=1')->select();
+		$con=array('status'=>1,'venno'=>session('login_venno'));
+		$menu = $ph->relation(true)->where($con)->select();
 		$menu = outTreeList(arrToTree($menu,0),0);
 		$this->assign('menu', $menu);
 		$this->display();

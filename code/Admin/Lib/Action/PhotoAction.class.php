@@ -3,6 +3,7 @@ class PhotoAction extends CommonAction{
 	public function index() {
 		$con = parent::_searchid('Photo');
 		$con['status']=array('gt',0);
+		$con['venno']=session('login_venno');
 		$ph = D("Photo");
 		$al = D('Album');
 		$lista=$al->field('id,pid,title')->order('pid,sort')->select();
@@ -10,7 +11,7 @@ class PhotoAction extends CommonAction{
 			$con['name']=array('like','%'.$con['name'].'%');
 			$catList = $ph->relation(true)->where($con)->order('aid,sort')->select();
 		}else{
-			$catList = $ph->relation(true)->order('aid,sort')->select();
+			$catList = $ph->relation(true)->where($con)->order('aid,sort')->select();
 		}
 		$list=$catList;
 		$listall = outTreeList(arrToTree($lista,0),0);
@@ -50,12 +51,13 @@ class PhotoAction extends CommonAction{
 		if ($_GET['pid'] != '') {
 			$pid = $_GET['pid'];
 		}
+		$con['status']=array('gt',0);
+		$con['venno']=session('login_venno');
 		$al = D('Album');
-		$lista=$al->field('id,pid,title')->order('pid,sort')->select();
+		$lista=$al->field('id,pid,title')->where($con)->order('pid,sort')->select();
 		$this->listall = outTreeList(arrToTree($lista,0),0);
 		$this->assign('pid', $pid);
 		$this->assign('time',time());
-		//p($_SESSION);die;
 	}
 	public function adds() {
 		$pid = 0;
@@ -73,11 +75,13 @@ class PhotoAction extends CommonAction{
 		if ($_GET['id'] != '') {
 			$id = $_GET['id'];
 		}
+		$con['status']=array('gt',0);
+		$con['venno']=session('login_venno');
 		$ph = D('Photo');
 		$list=$ph->relation(true)->where('id='.$id)->select();
 		$this->assign('list', $list);
 		$al = D('Album');
-		$lista=$al->field('id,pid,title')->order('pid,sort')->select();
+		$lista=$al->field('id,pid,title')->where($con)->order('pid,sort')->select();
 		$this->listall = outTreeList(arrToTree($lista,0),0);
 	}
 	public function picUpload(){

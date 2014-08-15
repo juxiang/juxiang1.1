@@ -1,0 +1,60 @@
+<include file="Public:pagerForm" />
+
+<div class="page" id='veninvendispage'>
+	<!-- <div class="pageHeader">
+	        <form rel="pagerForm" onsubmit="return navTabSearch(this);" action="__URL__" method="post">
+	            <div class="searchBar">
+	                <ul class="searchContent">
+	                    <li>
+	                        <label>名称：</label>
+	                        <input type="text" name="invenname" value=""/>
+	                    </li>
+	                </ul>
+	                <div class="subBar">
+	                    <ul>
+	                        <li><div class="buttonActive"><div class="buttonContent"><button type="submit">查询</button></div></div></li>
+	                    </ul>
+	                </div>
+	            </div>
+	        </form>
+	</div> -->
+
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="__URL__/displaylist" target="ajax" rel='veninvendispage' ><span>存货展示详情列表</span></a></li>
+<!-- 			<li><a class="edit" href="__URL__/edit/id/{sid_node}" target="ajax" rel='invenpage' warn="请选择节点"><span>编辑</span></a></li> -->
+			<!-- <li><a class="delete" href="__URL__/fdelete/id/{sid_node}/navTabId/__MODULE__" target="ajaxTodo" calback="navTabAjaxMenu" title="你确定要删除吗？" warn="请选择节点"><span>删除</span></a></li> -->
+		</ul>
+	</div>
+	<table class="list" width="100%" layoutH="115">
+	<div  align='center' style='font-size:20px;color:red'>未设置展示详情的存货列表</div>
+		<thead>
+			<tr>
+				<th width="60">系统分类</th>
+				<th width="200">名	称</th>
+				<th width="40">图	片</th>
+				<th width="60">操	作</th>
+			</tr>
+		</thead>
+		<tbody>
+		<volist id="vo" name="list">
+		<tr target="sid_node" rel="{$vo['id']}">
+		<td>{$vo.syscname}</td>
+		<td>{$vo.invenname}</td>
+		<td><a href="{$vo.picpath_m}"><img src='{$vo.picpath_s}' height='40' width='40'/></a></td>
+		<td>
+		<a href="__URL__/add/invenno/{$vo['invenno']}" target="dialog" rel='veninvendispage'>[设置]</a></td>
+		</tr>
+		</volist>
+		</tbody>
+	</table>
+    <div class="panelBar">
+		<div class="pages">
+			<span>共{$totalCount}条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
+	</div>
+
+</div>
+</div>

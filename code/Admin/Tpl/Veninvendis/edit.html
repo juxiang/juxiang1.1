@@ -1,0 +1,38 @@
+<div class="pageContent">
+
+	<form method="post" action="__URL__/update/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<input type="hidden" name="user_id" value="<?php echo $_SESSION[C('USER_AUTH_KEY')] ?>"/> 
+		<input type="hidden" name="venno" value="{$Think.session.login_venno}">
+		<input type="hidden" name="id" value="{$Think.get.id}">
+		<div class="pageFormContent" layoutH="58">
+            <div class="unit">
+				<label>产品简介：</label>
+				<textarea class="required" name="captions" cols='60' rows='3'>{$vo.captions|htmlspecialchars}
+				</textarea>
+			</div>
+			<div class="unit">
+				<label>详细参数：</label>
+				<textarea class="editor" class="required" name="tables" cols='62' rows='10'>{$vo.tables|htmlspecialchars}
+				</textarea>
+			</div>
+<!-- 			<div class="unit" >
+                    <dt>图片:</dt>
+                    <dd>
+                        <input name="photo.id" value='{$data.photoid}' type="hidden"/>
+                        <input name="photo.picpath_s" value='' type="hidden"/>
+                        <input class="required" name="photo.name" type="text" value='{$data.pname}' readonly/>
+                        <a class="btnLook" href="__URL__/treeLookup" lookupGroup="photo" target="dalog" mask="true">选择</a>	
+                    </dd>
+             </div> -->
+		</div>
+		
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+
+</div>
+
